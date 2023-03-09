@@ -1,0 +1,176 @@
+.input {
+  display: flex;
+
+  padding: 7px;
+
+  border-style: none;
+  border-radius: 3px;
+  width: 300px;
+
+  font-size: 18px;
+  box-shadow: inset 0px 0px 5px -2px #000000;
+  background-color: #f5f5f5;
+}
+
+.searchForm {
+  border-style: double;
+  border-color: black;
+  border-width: medium;
+  padding: 10px;
+  width: 400px;
+  float: left;
+}
+
+.right {
+  margin-left: 450px;
+
+}
+
+.navbutton {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 25px;
+  width: 200px;
+  padding: 10px;
+  border-radius: 3px;
+  border-style: none;
+
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+
+  background-color: lightblue;
+  box-shadow: inset 0px 0px 5px -2px #000000;
+}
+
+.introclass {
+  display: inline-block;
+  background: -webkit-linear-gradient(45deg, #c1ece1, #e6fff6);
+  margin: 30px auto;
+  max-width: 800px;
+  text-align: center;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.sTitle {
+  font-size: 40px;
+  color: #333333;
+  text-align: center;
+  padding-top: 0px;
+  padding-left: 10px;
+  border-top: 0px;
+  margin-top:0px;
+  font-family: "Roboto";
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.intro {
+  color: #777777;
+  font-size: 25px;
+  background: linear-gradient(to right, black rgb(0, 80, 180));
+  text-align: left;
+  padding: 5%;
+  padding-left: 10%;
+}
+
+.testButtonDisplay {
+  background-color: rgba(255, 0, 0, 0);
+  border-width: medium;
+  border-style: solid;
+  border-color: rgba(100, 100, 100, 0.5);
+  border-radius: 20px;
+  font-size: 36px;
+  margin: 8% 0;
+}
+
+.testButtonDisplay:hover {
+  background-color: rgb(40, 150, 80);
+  border-color: rgba(100, 100, 100, 0.5);
+}
+
+.testButtonDisplay:active {
+  background-color: rgb(40, 150, 80);
+  border-color: rgba(100, 100, 100, 0.5);
+}
+
+.numOfTest {
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 30px;
+  color: #555555;
+}
+
+.mainPage {
+  display:block;
+  text-align: center;
+}
+
+.inTest {
+  margin: 50px auto;
+  display: inline-block;
+}
+
+@media (max-width: 700px) {
+  .sTitle {
+    font-size: 25px;
+  }
+  .intro {
+    font-size: 22px;
+  }
+  .testButtonDisplay {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sTitle {
+    font-size: 22px;
+  }
+  .intro {
+    font-size: 18px;
+    padding: 5%;
+  }
+  .introclass {
+    padding: 30px;
+    background: #c1ece1;
+    margin-top: 30px;
+  }
+  .testButtonDisplay {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 450px) {
+  .sTitle {
+    font-size: 22px;
+    padding: 20px 0px;
+    margin: auto;
+  }
+  .intro {
+    font-size: 16px;
+    padding: 0px 5%;
+    margin-bottom: 0px;
+  }
+  .introclass {
+    padding: 16px;
+    background: #c1ece1;
+    margin: auto;
+  }
+  .testButtonDisplay {
+    font-size: 22px;
+    margin: 5% 0;
+  }
+  .inTest {
+    margin: 0px auto;
+    display: inline-block;
+  }
+  .itsm {
+    padding-top: 0px;
+  }
+  .stsm {
+    padding-bottom: 0px;
+  }
+}

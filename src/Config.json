@@ -1,0 +1,18 @@
+{
+  "baseUrl": "https://musicemotion.herokuapp.com",
+  "pollLimit": 20,
+  "gatewayEPs": {
+    "reportEP": "/report"
+  },
+  "idmEPs": {
+    "loginEP": "/login",
+    "registerEP": "/register"
+  },
+  "experimentEPs": {
+    "startEP": "/experiment/start",
+    "memoryEP": "/memory",
+    "musicUpdateEP": "/music/update",
+    "expEndEP": "/experiment/end"
+
+  }
+}
