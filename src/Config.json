@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://musicemotion.herokuapp.com",
+  "baseUrl": "http://back3.memomusic.cn",
   "pollLimit": 20,
   "gatewayEPs": {
     "reportEP": "/report"
