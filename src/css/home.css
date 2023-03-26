@@ -12,6 +12,20 @@
   background-color: #f5f5f5;
 }
 
+.selectWeather{
+  display: flex;
+  align-items: flex-start;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.selectContext{
+  display: flex;
+  align-items: flex-start;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
 .searchForm {
   border-style: double;
   border-color: black;

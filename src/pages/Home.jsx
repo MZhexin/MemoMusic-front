@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import Experiment from "../services/Experiment.js";
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import Experiment from '../services/Experiment.js';
+import { Link } from 'react-router-dom';
 import VAcanvas from './VAcanvas.jsx';
 import MP3 from './MP3.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from 'react-bootstrap';
-import "../css/home.css";
+import { Button } from 'react-bootstrap';
+import '../css/home.css';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       val: [],
-      memo: "",
+      memo: '',
       step: 0,
       songnum: 1,
       initop: -50,
@@ -22,17 +22,19 @@ class Home extends Component {
       width: 0,
       height: 0,
       canvasWidth: 0,
-      songs: ["第1首", "第2首", "第3首", "第4首"],
+      songs: ['第1首', '第2首', '第3首', '第4首'],
       favorite: -1,
       overallRate: -1,
       v: -10,
       a: -10,
       mid: -1,
-      url: "",
+      url: '',
       rate: -1,
       fam: -1,
       needNewDate: false,
-      newDate: new Date()
+      newDate: new Date(),
+      weather: 0,
+      context: 0,
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -41,12 +43,16 @@ class Home extends Component {
     this.updateWindowDimensions();
     if (this.props.loggedIn === true && this.props.musicNum > 0) {
       //console.log(this.props.musicNum);
-      this.setState({left: (5 + this.props.v) * Math.min(800, window.innerWidth) / 10 - 10});
-      this.setState({top: (10 - this.props.a) * Math.min(800, window.innerWidth) / 10 - 10});
-      this.setState({step: (this.props.musicNum + 1) * 2});
-      this.setState({songnum: this.props.musicNum + 1});
-      this.setState({url: this.props.murl});
-      this.setState({mid: this.props.mid});
+      this.setState({
+        left: ((5 + this.props.v) * Math.min(800, window.innerWidth)) / 10 - 10,
+      });
+      this.setState({
+        top: ((10 - this.props.a) * Math.min(800, window.innerWidth)) / 10 - 10,
+      });
+      this.setState({ step: (this.props.musicNum + 1) * 2 });
+      this.setState({ songnum: this.props.musicNum + 1 });
+      this.setState({ url: this.props.murl });
+      this.setState({ mid: this.props.mid });
       //console.log(this.props.v * Math.min(800, window.innerWidth) / 10);
       //console.log(this.props.a * Math.min(800, window.innerWidth) / 10);
       //console.log((this.props.musicNum + 1) * 2 );
@@ -54,11 +60,11 @@ class Home extends Component {
     //console.log(this.props.endDate);
     //console.log(this.props.endDate === null);
 
-    this.setState({needNewDate: true});
+    this.setState({ needNewDate: true });
     var date = new Date();
     date.setDate(date.getDate() + 6);
     //console.log(date);
-    this.setState({newDate: date});
+    this.setState({ newDate: date });
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
@@ -69,47 +75,61 @@ class Home extends Component {
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
     if (window.innerWidth >= 820) {
-      this.setState({canvasWidth: 800});
+      this.setState({ canvasWidth: 800 });
       //console.log("window.innerWidth: " + window.innerWidth + "  canvasWidth: " + 800);
-    }
-    else{
-      this.setState({canvasWidth: window.innerWidth - 20});
+    } else {
+      this.setState({ canvasWidth: window.innerWidth - 20 });
       //console.log("window.innerWidth: " + window.innerWidth + "  canvasWidth: " + window.innerWidth);
     }
-
   }
 
   startNewExperiment = (v, a) => {
     //console.log("in startNewExperiment");
     //console.log(this.props.endDate);
-    Experiment.start(this.props.uId, this.props.expNum, v, a)
-      .then(response => {
+    Experiment.start(
+      this.props.uId,
+      this.props.expNum,
+      v,
+      a,
+      this.state.weather,
+      this.state.context
+    )
+      .then((response) => {
         //console.log(response);
-        if (response !== undefined){
-          this.setState({url: response.data.murl});
-          this.setState({mid: response.data.mid});
-          this.setState({step: this.state.step + 1});
-        }else{
-          alert("User not exist, please register!");
+        if (response !== undefined) {
+          this.setState({ url: response.data.murl });
+          this.setState({ mid: response.data.mid });
+          this.setState({ step: this.state.step + 1 });
+        } else {
+          alert('User not exist, please register!');
         }
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   recordEachMusic = (v, a, rate, fam) => {
-    Experiment.musicUpdate(parseInt(this.props.uId), parseInt(this.props.expNum), this.state.songnum - 1, parseInt(this.state.mid), v, a, parseInt(rate), parseInt(fam))
-      .then(response => {
+    Experiment.musicUpdate(
+      parseInt(this.props.uId),
+      parseInt(this.props.expNum),
+      this.state.songnum - 1,
+      parseInt(this.state.mid),
+      v,
+      a,
+      parseInt(rate),
+      parseInt(fam)
+    )
+      .then((response) => {
         //console.log(response);
-        if (response !== undefined){
-          this.setState({url: response.data.murl});
-          this.setState({mid: response.data.mid});
-          this.setState({step: this.state.step + 1});
-        }else{
-          alert("Something wrong with musicUpdate, please check!");
+        if (response !== undefined) {
+          this.setState({ url: response.data.murl });
+          this.setState({ mid: response.data.mid });
+          this.setState({ step: this.state.step + 1 });
+        } else {
+          alert('Something wrong with musicUpdate, please check!');
         }
       })
-      .catch(error => console.log(error));
-  }
+      .catch((error) => console.log(error));
+  };
 
   updateField = ({ target }) => {
     const { name, value } = target;
@@ -140,58 +160,81 @@ class Home extends Component {
       //console.log(v + " " + a + " " + rate + " " + fam)
       this.recordEachMusic(v, a, rate, fam);
     }
-  }
+  };
 
   selectOverallRate = (e) => {
-    this.setState({overallRate: e.target.value});
-  }
+    this.setState({ overallRate: e.target.value });
+  };
 
   selectFavoriteSong = (e) => {
-    this.setState({favorite: e.target.value});
-  }
+    this.setState({ favorite: e.target.value });
+  };
+
+  selectWeather = (e) => {
+    this.setState({ weather: e.target.value });
+  };
+
+  selectContext = (e) => {
+    this.setState({ context: e.target.value });
+  };
 
   startTest = () => {
-    this.setState({step: this.state.step + 1});
-  }
+    this.setState({ step: this.state.step + 1 });
+  };
 
   endTest = () => {
     if (this.state.overallRate > 0 && this.state.favorite > 0) {
-      Experiment.expEnd(parseInt(this.props.uId), parseInt(this.props.expNum), this.state.v, this.state.a, parseInt(this.state.favorite), parseInt(this.state.overallRate))
-      .then(response => {
+      Experiment.expEnd(
+        parseInt(this.props.uId),
+        parseInt(this.props.expNum),
+        this.state.v,
+        this.state.a,
+        parseInt(this.state.favorite),
+        parseInt(this.state.overallRate)
+      ).then((response) => {
         //console.log(response);
-      })
+      });
       this.props.handleLogOut();
-    }else {
+    } else {
       if (this.state.overallRate < 0) {
-        this.setState({overallRate: 0});
+        this.setState({ overallRate: 0 });
       }
-      if(this.state.favorite < 0) {
-        this.setState({favorite: 0});
+      if (this.state.favorite < 0) {
+        this.setState({ favorite: 0 });
       }
     }
-  }
+  };
 
   audioEnd = (writingComment) => {
     if (!writingComment) {
-      this.setState({step: this.state.step + 1, songnum: this.state.songnum + 1});
+      this.setState({
+        step: this.state.step + 1,
+        songnum: this.state.songnum + 1,
+      });
     }
-  }
+  };
 
   render() {
-    if(this.props.loggedIn === false) {
-      return(
-        <div style={{"textAlign": "center"}}>
+    if (this.props.loggedIn === false) {
+      return (
+        <div style={{ textAlign: 'center' }}>
           <h1>请先登录或者注册，谢谢！</h1>
           <br />
           <br />
           <br />
-          <h3><Link to="/faq">点击此处阅读实验介绍</Link></h3>
+          <h3>
+            <Link to='/faq'>点击此处阅读实验介绍</Link>
+          </h3>
           <br />
           <br />
-          <h3><Link to="/login">点击此处登录网页</Link></h3>
+          <h3>
+            <Link to='/login'>点击此处登录网页</Link>
+          </h3>
           <br />
           <br />
-          <h3><Link to="/register">点击此处注册账号</Link></h3>
+          <h3>
+            <Link to='/register'>点击此处注册账号</Link>
+          </h3>
           <br />
           <br />
           <br />
@@ -202,68 +245,135 @@ class Home extends Component {
       );
     }
     if (this.state.step === 0) {
-      return(
-        <div className="mainPage">
-        <div className="introclass">
-          <p className='sTitle'>实验入口</p>
-          {this.props.expNum <= 5 &&
-          <p className="intro">
-              本实验旨在测试音乐对人情绪的影响。<br/>
-              实验将分为<span className="numOfTest">5</span> 轮进行，
-              {this.state.width >=600 && <br/>}
-              我们希望您在<span className="numOfTest">1</span> 天之中完成不多于<span className="numOfTest">2</span> 轮实验，{this.state.width >=600 && <br/>}
-              请尽量选择有不同情绪时进行试验，
-              并在<span className="numOfTest">3</span> 天之内完成所有<span className="numOfTest">5</span>轮实验。<br/>
-              每<span className="numOfTest">1</span> 轮实验开始前我们都将请您输入您当下的情绪数据（采用<Link to="/faq">V-A模型</Link>），{this.state.width >=600 && <br/>}
-              之后您将听到<span className="numOfTest">4</span> 段不同的轻音乐。<br/>
-              如果音乐唤起了您的部分记忆或情绪，{this.state.width >=600 && <br/>}
-              我们希望您能在网页提供的输入框内简洁直白地描述，<br/>
-              这将对我们实验中研究记忆如何影响我们对于音乐的理解有极大帮助。<br/>
-              在每段音乐结束之后，我们同样会使用V-A模型来采取您情绪变化的数据，{this.state.width >=600 && <br/>}
-              以供实验对比。<br />
-              该V-A值将在之后用来调整算法，不会影响本轮音乐推荐。<br/><br/>
+      return (
+        <div className='mainPage'>
+          <div className='introclass'>
+            <p className='sTitle'>实验入口</p>
+            {this.props.expNum <= 4 && (
+              <p className='intro'>
+                本实验旨在测试音乐对人情绪的影响。
+                <br />
+                实验将分为<span className='numOfTest'>4</span> 轮进行，
+                {this.state.width >= 600 && <br />}
+                我们希望您在<span className='numOfTest'>1</span>{' '}
+                天之中完成不多于<span className='numOfTest'>2</span> 轮实验，
+                {this.state.width >= 600 && <br />}
+                请尽量选择有不同情绪时进行试验， 并在
+                <span className='numOfTest'>3</span> 天之内完成所有
+                <span className='numOfTest'>4</span>轮实验。
+                <br />每<span className='numOfTest'>1</span>{' '}
+                轮实验开始前我们都将请您输入您当下的情绪数据（采用
+                <Link to='/faq'>V-A模型</Link>），
+                {this.state.width >= 600 && <br />}
+                之后您将听到<span className='numOfTest'>4</span>{' '}
+                段不同的轻音乐。
+                <br />
+                如果音乐唤起了您的部分回忆或情绪，
+                {this.state.width >= 600 && <br />}
+                我们希望您能在网页提供的输入框内简洁直白地描述，
+                <br />
+                这将对我们实验中研究回忆如何影响我们对于音乐的理解有极大帮助。
+                <br />
+                在每段音乐结束之后，我们同样会使用V-A模型来采取您情绪变化的数据，
+                {this.state.width >= 600 && <br />}
+                以供实验对比。
+                <br />
+                该V-A值将在之后用来调整算法，不会影响本轮音乐推荐。
+                <br />
+                <br />
+                请您在实验开始后不要离开这个页面直至结束。
+                <br />
+                如需离开，请您在返回时务必重新登录。
+                <br />
+                如果您在本轮实验开始后的3个小时内重新登录，
+                <br />
+                您将可以继续实验中未完成的部分。
+                <br />
+                如果超过3个小时， 则本轮实验的记录将清空，您需重新开始本轮实验。
+                <br />
+                <br />
+                <br />
+                这是您的第<span className='numOfTest'>{this.props.expNum}</span>
+                轮实验
+              </p>
+            )}
+            {this.props.expNum > 4 && (
+              <p className='intro'>
+                您已完成所有实验，我们衷心感谢您的支持与帮助！
+              </p>
+            )}
 
-              请您在实验开始后不要离开这个页面直至结束。<br/>
-              如需离开，请您在返回时务必重新登录。<br/>
-              如果您在本轮实验开始后的3个小时内重新登录，<br/>
-              您将可以继续实验中未完成的部分。<br/>
-              如果超过3个小时，
-              则本轮实验的记录将清空，您需重新开始本轮实验。<br/>
-              <br/>
-              <br/>
-
-            这是您的第<span className="numOfTest">{this.props.expNum}</span>轮实验</p>
-          }
-          {this.props.expNum > 5 &&
-            <p  className="intro">您已完成所有实验，我们衷心感谢您的支持与帮助！</p>
-          }
-
-          <div>
-          {this.props.expNum <= 5 &&
-            <Button className="testButtonDisplay" onClick={() => this.startTest()}>开始实验</Button>
-          }
-          {this.props.expNum > 5 &&
-            <Button className="testButtonDisplay" onClick={() => this.props.handleLogOut()}>退出登录</Button>
-          }
+            <div>
+              {this.props.expNum <= 4 && (
+                <Button
+                  className='testButtonDisplay'
+                  onClick={() => this.startTest()}
+                >
+                  开始实验
+                </Button>
+              )}
+              {this.props.expNum > 4 && (
+                <Button
+                  className='testButtonDisplay'
+                  onClick={() => this.props.handleLogOut()}
+                >
+                  退出登录
+                </Button>
+              )}
+            </div>
           </div>
-        </div>
         </div>
       );
     }
     if (this.state.step === 10) {
-      return(
-        <div className="mainPage">
-          <div className="introclass">
+      return (
+        <div className='mainPage'>
+          <div className='introclass'>
             <p className='sTitle'>恭喜您，完成本轮实验</p>
-            <p className='hint'>当前实验进度为 {this.props.expNum} / 5， <br /><br />请于{isNaN(this.props.endDate.getMonth()) ? this.state.newDate.getMonth() + 1 : this.props.endDate.getMonth() + 1}月{isNaN(this.props.endDate.getDate()) ? this.state.newDate.getDate() : this.props.endDate.getDate()}日之前完成剩余部分</p>
-            <div style={{display: "block"}}>
-              {this.state.favorite === 0 &&
-                <p className="hint" style={{marginBottom: "0px", paddingBottom: "0px", display: "inline", color: "#dd0000"}}>请选择本轮您最满意的音乐：</p>
-              }
-              {this.state.favorite !== 0 &&
-                <p className="hint" style={{marginBottom: "0px", paddingBottom: "0px", display: "inline"}}>请选择本轮您最满意的音乐：</p>
-              }
-              <select value={this.state.favorite} onChange={this.selectFavoriteSong} style={{display: "inline"}}>
+            <p className='hint'>
+              当前实验进度为 {this.props.expNum} / 4， <br />
+              <br />
+              请于3
+              {/* {isNaN(this.props.endDate.getMonth())
+                ? this.state.newDate.getMonth() + 1
+                : this.props.endDate.getMonth() + 1} */}
+              月31
+              {/* {isNaN(this.props.endDate.getDate())
+                ? this.state.newDate.getDate()
+                : this.props.endDate.getDate()} */}
+              日之前完成剩余部分
+            </p>
+            <div style={{ display: 'block' }}>
+              {this.state.favorite === 0 && (
+                <p
+                  className='hint'
+                  style={{
+                    marginBottom: '0px',
+                    paddingBottom: '0px',
+                    display: 'inline',
+                    color: '#dd0000',
+                  }}
+                >
+                  请选择本轮您最满意的音乐：
+                </p>
+              )}
+              {this.state.favorite !== 0 && (
+                <p
+                  className='hint'
+                  style={{
+                    marginBottom: '0px',
+                    paddingBottom: '0px',
+                    display: 'inline',
+                  }}
+                >
+                  请选择本轮您最满意的音乐：
+                </p>
+              )}
+              <select
+                value={this.state.favorite}
+                onChange={this.selectFavoriteSong}
+                style={{ display: 'inline' }}
+              >
                 <option value={0}> （空）</option>
                 <option value={1}> {this.state.songs[0]}</option>
                 <option value={2}> {this.state.songs[1]}</option>
@@ -272,13 +382,36 @@ class Home extends Component {
               </select>
               <br />
               <br />
-              {this.state.overallRate === 0 &&
-                <p className="hint" style={{marginBottom: "0px", paddingBottom: "0px", display: "inline", color: "#dd0000"}}>请为本轮推荐的音乐做总评分：</p>
-              }
-              {this.state.overallRate !== 0 &&
-                <p className="hint" style={{marginBottom: "0px", paddingBottom: "0px", display: "inline"}}>请为本轮推荐的音乐做总评分：</p>
-              }
-              <select value={this.state.overallRate} onChange={this.selectOverallRate} style={{display: "inline"}}>
+              {this.state.overallRate === 0 && (
+                <p
+                  className='hint'
+                  style={{
+                    marginBottom: '0px',
+                    paddingBottom: '0px',
+                    display: 'inline',
+                    color: '#dd0000',
+                  }}
+                >
+                  请为本轮推荐的音乐做总评分：
+                </p>
+              )}
+              {this.state.overallRate !== 0 && (
+                <p
+                  className='hint'
+                  style={{
+                    marginBottom: '0px',
+                    paddingBottom: '0px',
+                    display: 'inline',
+                  }}
+                >
+                  请为本轮推荐的音乐做总评分：
+                </p>
+              )}
+              <select
+                value={this.state.overallRate}
+                onChange={this.selectOverallRate}
+                style={{ display: 'inline' }}
+              >
                 <option value={0}> （空）</option>
                 <option value={1}> 很失望</option>
                 <option value={2}> 有点失望</option>
@@ -290,67 +423,152 @@ class Home extends Component {
             <br />
             <br />
             <div>
-              <Button className="testButtonDisplay" onClick={() => this.endTest()}>完成实验并退出登录</Button>
+              <Button
+                className='testButtonDisplay'
+                onClick={() => this.endTest()}
+              >
+                完成实验并退出登录
+              </Button>
             </div>
           </div>
         </div>
       );
     }
     if (this.state.step === 10) {
-      return(
-        <div className="mainPage">
-          <div className="inTest">
-          <p className='sTitle'>恭喜您已完成本次实验听音乐的部分，<br />请完成以下问卷以结束实验：</p>
-          <div style={{display: "block", width: this.state.canvasWidth+"px", margin: "auto"}}>
-          {/*
+      return (
+        <div className='mainPage'>
+          <div className='inTest'>
+            <p className='sTitle'>
+              恭喜您已完成本次实验听音乐的部分，
+              <br />
+              请完成以下问卷以结束实验：
+            </p>
+            <div
+              style={{
+                display: 'block',
+                width: this.state.canvasWidth + 'px',
+                margin: 'auto',
+              }}
+            >
+              {/*
           <VAcanvas width={this.state.canvasWidth} endTest = {this.endTest} step={this.state.step} display="inherit" top={this.state.top === -50? this.state.initop : this.state.top} left={this.state.left === -50? this.state.inileft : this.state.left}}/>
           */}
-          </div>
+            </div>
           </div>
         </div>
       );
     }
     if (this.state.step === 1) {
-      return(
-        <div className="mainPage">
-          <div className="inTest">
+      return (
+        <div className='mainPage'>
+          <p className='sTitle'>请选择您当下所处的天气环境：</p>
+          <select
+            className='selectWeather'
+            value={this.state.weather}
+            onChange={this.selectWeather}
+            style={{ display: 'inline' }}
+          >
+            {
+              //onChange需要添加
+            }
+            {/* <option value={0} defaultValue disabled> （空）</option> */}
+            <option value={0}> 晴朗</option>
+            <option value={1}> 阴雨</option>
+            <option value={2}> 炎热</option>
+            <option value={3}> 寒冷</option>
+          </select>
+          <p className='sTitle'>请选择您当下所处的心情：</p>
+          <select
+            className='selectContext'
+            value={this.state.context}
+            onChange={this.selectContext}
+            style={{ display: 'inline' }}
+          >
+            {/* <option value={0} defaultValue disabled> （空）</option> */}
+            <option value={3}> 疯狂：崩溃、愤怒、暴躁......</option>
+            <option value={0}> 消极：生病、抑郁、失恋......</option>
+            <option value={1}> 低落：无聊、加班、独处......</option>
+            <option value={2}> 平静：阅读、学习、休闲......</option>
+            <option value={5}>积极：休闲运动、旅行......</option>
+            <option value={6}>兴奋：游戏、比赛、剧烈运动......</option>
+            <option value={4}> 有爱：恋爱、聚会......</option>
+          </select>
+          {/* <div className="inTest"> */}
           <p className='sTitle'>请输入您当下的情绪：</p>
-          <div style={{display: "block", width: this.state.canvasWidth+"px", margin: "auto"}}>
-          <VAcanvas width={this.state.canvasWidth} processVA = {this.processVA} step={this.state.step} display="none"/>
+          <div
+            style={{
+              display: 'block',
+              width: this.state.canvasWidth + 'px',
+              margin: 'auto',
+            }}
+          >
+            <VAcanvas
+              width={this.state.canvasWidth}
+              processVA={this.processVA}
+              step={this.state.step}
+              display='none'
+            />
           </div>
-          </div>
+          {/* </div> */}
         </div>
       );
     }
     if (this.state.step !== 0 && this.state.step % 2 === 0) {
-      return(
-        <div className="mainPage">
-          <div className="inTest">
+      return (
+        <div className='mainPage'>
+          <div className='inTest'>
             <p className='sTitle'>请听音乐 {this.state.songnum}/ 4</p>
-            <div style={{display: "block", width: this.state.canvasWidth+"px", margin: "auto"}}>
-              <MP3 width={this.state.canvasWidth} audioEnd = {this.audioEnd} url={this.state.url} expNum={this.props.expNum} songNum={this.state.songnum} uId={this.props.uId}/>
+            <div
+              style={{
+                display: 'block',
+                width: this.state.canvasWidth + 'px',
+                margin: 'auto',
+              }}
+            >
+              <MP3
+                width={this.state.canvasWidth}
+                audioEnd={this.audioEnd}
+                url={this.state.url}
+                expNum={this.props.expNum}
+                songNum={this.state.songnum}
+                uId={this.props.uId}
+              />
             </div>
           </div>
         </div>
       );
     }
     if (this.state.step !== 0 && this.state.step % 2 === 1) {
-      return(
-        <div className="mainPage">
-          <div className="inTest">
-          <p className='sTitle stsm'>请输入您当下的情绪：</p>
-          <p className='hint itsm'>(蓝点作为参考表示上一次输入的值)</p>
-          <div style={{display: "block", width: this.state.canvasWidth+"px", margin: "auto"}}>
-          <VAcanvas width={this.state.canvasWidth} processVA = {this.processVA} step={this.state.step} display="inherit" top={this.state.top === -50? this.state.initop : this.state.top} left={this.state.left === -50? this.state.inileft : this.state.left}/>
-          </div>
+      return (
+        <div className='mainPage'>
+          <div className='inTest'>
+            <p className='sTitle stsm'>请输入您当下的情绪：</p>
+            <p className='hint itsm'>(蓝点作为参考表示上一次输入的值)</p>
+            <div
+              style={{
+                display: 'block',
+                width: this.state.canvasWidth + 'px',
+                margin: 'auto',
+              }}
+            >
+              <VAcanvas
+                width={this.state.canvasWidth}
+                processVA={this.processVA}
+                step={this.state.step}
+                display='inherit'
+                top={
+                  this.state.top === -50 ? this.state.initop : this.state.top
+                }
+                left={
+                  this.state.left === -50 ? this.state.inileft : this.state.left
+                }
+              />
+            </div>
           </div>
         </div>
       );
     }
-    return (
-      <div>
-      </div>
-    );
+    return <div></div>;
   }
 }
 
