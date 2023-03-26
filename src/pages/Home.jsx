@@ -239,8 +239,11 @@ class Home extends Component {
           <br />
           <br />
           <br />
-          <h5>咨询相关信息，请加微信 ljy1297745191</h5>
-          <h5>联系管理员</h5>
+          <h5>
+            咨询相关信息，请加微信 <br />
+            szxh20190131 或者 zzhang32qq <br />
+            以联系管理员
+          </h5>
         </div>
       );
     }
