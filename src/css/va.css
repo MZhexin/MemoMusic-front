@@ -1,9 +1,13 @@
 .hint {
-  color: #55555;
+  color: rgb(0, 0, 0);
   font-size: 22px;
   text-align: center;
   padding: 30px 0px;
 }
+
+/* .va-background{
+  padding: 8px;
+} */
 
 .testButtonDisplay {
   background-color: rgba(255, 0, 0, 0);
@@ -34,7 +38,7 @@
 }
 
 .hintsm {
-  padding: 10px 0px;
+  padding: 30px 0px;
 }
 
 @media (max-width: 450px) {

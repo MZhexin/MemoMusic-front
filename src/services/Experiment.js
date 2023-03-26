@@ -3,12 +3,14 @@ import { experimentEPs } from "../Config.json";
 
 const { startEP, memoryEP, musicUpdateEP, expEndEP } = experimentEPs;
 
-async function start(uid, exp_num, initial_v, initial_a) {
+async function start(uid, exp_num, initial_v, initial_a, weather, context) {
   const payLoad = {
     uid: uid,
     exp_num: exp_num,
     initial_v: initial_v,
-    initial_a: initial_a
+    initial_a: initial_a,
+    weather: weather,
+    context: context
   };
   //console.log(payLoad, startEP);
   return await Socket.POST(startEP, payLoad);
@@ -47,7 +49,8 @@ async function expEnd(uid, exp_num, v, a, evaluate, recommend_rate) {
     final_v: v,
     final_a: a,
     evaluate: evaluate,
-    recommend_rate: recommend_rate
+    recommend_rate: recommend_rate,
+
   };
   //console.log(payLoad);
   return await Socket.POST(expEndEP, payLoad);
