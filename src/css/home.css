@@ -112,8 +112,13 @@
 .numOfTest {
   font-style: italic;
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 25px;
   color: #555555;
+}
+
+.login-context {
+  font-size: 33px;
+  font-weight: bold;
 }
 
 .mainPage {
