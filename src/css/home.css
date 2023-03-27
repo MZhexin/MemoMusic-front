@@ -112,7 +112,7 @@
 .numOfTest {
   font-style: italic;
   font-weight: bolder;
-  font-size: 25px;
+  font-size: 24px;
   color: #555555;
 }
 
@@ -136,7 +136,7 @@
     font-size: 25px;
   }
   .intro {
-    font-size: 22px;
+    font-size: 20px;
   }
   .testButtonDisplay {
     font-size: 28px;

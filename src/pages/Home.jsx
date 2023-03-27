@@ -218,7 +218,11 @@ class Home extends Component {
     if (this.props.loggedIn === false) {
       return (
         <div style={{ textAlign: 'center' }}>
-          <h2 className='login-context'>请先登录或者注册，谢谢！</h2>
+          <h2 className='login-context'>
+            请先登录或者注册，
+            <br />
+            谢谢！
+          </h2>
           <br />
           <br />
           <br />
@@ -241,7 +245,7 @@ class Home extends Component {
           <br />
           <p>
             咨询相关信息，请加微信 <br />
-            szxh20190131 或者 zzhang32qq <br />
+            szxh20190131 或者 Nag12333 <br />
             以联系管理员
           </p>
         </div>
