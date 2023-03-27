@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://127.0.0.1:5000/",
+  "baseUrl": "http://back3.memomusic.cn",
   "pollLimit": 20,
   "gatewayEPs": {
     "reportEP": "/report"
