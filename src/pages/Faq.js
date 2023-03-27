@@ -84,9 +84,11 @@ class Faq extends Component {
                 第二、三轮我们将为您生成音乐的片段。
                 <br />
                 <br />
-                我们希望您在一天之中完成不多余一轮实验，
+                我们希望您在一天之中完成
+                <span className='faq-highlight'>不多于两轮</span> 实验，
                 <br />
-                并在四天之内完成所有实验。
+                并在<span className='faq-highlight'>4月1日前</span>{' '}
+                完成所有实验。
                 <br />
                 <br />
                 每一轮实验开始前我们都将请您输入您当下的情绪数据（采用V-A模型），
@@ -125,9 +127,15 @@ class Faq extends Component {
                 <br />
                 比如下图所示的愉悦度区间为[-5, 5]，
                 <br />
-                其中-5代表非常悲伤/消极，5代表非常高兴/积极；
+                其中
+                <span className='faq-highlight'>
+                  -5代表非常悲伤/消极，5代表非常高兴/积极；
+                </span>
                 <br />
-                兴奋度区间为[0, 10] ，其中0代表平静，10代表非常激动。
+                兴奋度区间为[0, 10] ，其中
+                <span className='faq-highlight'>
+                  0代表平静，10代表非常激动。
+                </span>
                 <br />
                 <br />
                 根据这个定义，喜悦根据程度不同可以用V(愉悦度)：5，A(兴奋度)：8等表示；
@@ -153,7 +161,8 @@ class Faq extends Component {
           {this.state.questions[3] && (
             <div>
               <p className='faq-content'>
-                我们希望您能在听音乐时尽可能多地描述您被音乐唤起的回忆。
+                我们希望您能在听音乐时尽可能多地描述您
+                <span className='faq-highlight'>被音乐唤起的回忆</span>。
                 <br />
                 描述回忆时，
                 <br />

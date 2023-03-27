@@ -218,7 +218,7 @@ class Home extends Component {
     if (this.props.loggedIn === false) {
       return (
         <div style={{ textAlign: 'center' }}>
-          <h1>请先登录或者注册，谢谢！</h1>
+          <h2 className='login-context'>请先登录或者注册，谢谢！</h2>
           <br />
           <br />
           <br />
@@ -273,7 +273,8 @@ class Home extends Component {
                 <br />
                 如果音乐唤起了您的部分回忆或情绪，
                 {this.state.width >= 600 && <br />}
-                我们希望您能在网页提供的输入框内简洁直白地描述，
+                我们希望您能在网页提供的输入框内
+                <span className='numOfTest'>简洁直白地描述</span> ，
                 <br />
                 这将对我们实验中研究回忆如何影响我们对于音乐的理解有极大帮助。
                 <br />
@@ -336,11 +337,11 @@ class Home extends Component {
             <p className='hint'>
               当前实验进度为 {this.props.expNum} / 4， <br />
               <br />
-              请于3
+              请于4
               {/* {isNaN(this.props.endDate.getMonth())
                 ? this.state.newDate.getMonth() + 1
                 : this.props.endDate.getMonth() + 1} */}
-              月31
+              月1
               {/* {isNaN(this.props.endDate.getDate())
                 ? this.state.newDate.getDate()
                 : this.props.endDate.getDate()} */}
