@@ -34,7 +34,7 @@ class VAcanvas extends Component {
 
   componentDidMount() {
     var w = this.props.width;
-    console.log(w);
+    // console.log(w);
     //console.log("w: " + w);
     if (w < 800) {
       this.setState({ imgHeight: w, imgWidth: w });
@@ -88,8 +88,8 @@ class VAcanvas extends Component {
         parseInt(this.state.imgHeight / 10)) -
       10;
     this.setState({ x1: x, y1: y });
-    console.log(`x2:${this.state.val1x},y2:${this.state.val1y}`);
-    console.log(x, y);
+    // console.log(`x2:${this.state.val1x},y2:${this.state.val1y}`);
+    // console.log(x, y);
     //this.setState({x1: x, y1: y });
     var w = this.props.width;
     this.setState({
@@ -102,7 +102,6 @@ class VAcanvas extends Component {
       Math.abs(parseInt(x / (this.state.imgWidth / 11)) - 5) <= 5
       // Math.abs(10 - parseInt(0.2 + y / (this.state.imgHeight / 11)) - 5) <= 5
     ) {
-      console.log();
       this.setState({ rdotdisplay: '' });
     } else {
       this.setState({ rdotdisplay: 'none' });
