@@ -345,7 +345,7 @@ class Home extends Component {
               {/* {isNaN(this.props.endDate.getMonth())
                 ? this.state.newDate.getMonth() + 1
                 : this.props.endDate.getMonth() + 1} */}
-              月1
+              月2
               {/* {isNaN(this.props.endDate.getDate())
                 ? this.state.newDate.getDate()
                 : this.props.endDate.getDate()} */}

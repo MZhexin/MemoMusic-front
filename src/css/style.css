@@ -3,6 +3,7 @@
   font-size: 25px;
   color: var(--detail-font-color);
   text-decoration: none;
+  margin-right: 20px;
 }
 
 .nav-button {
@@ -13,17 +14,16 @@
   border-style: none;
   text-decoration: none;
 }
-
-.nav-intro {
+/* .nav-intro {
   margin-right: 70%;
-}
+} */
 
 .memo-title {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 25px;
+  font-size: 30px;
 }
 
-@media (max-width: 1400px) {
+/* @media (max-width: 1400px) {
   .nav-intro {
     margin-right: 60%;
   }
@@ -39,4 +39,4 @@
   .nav-intro {
     margin-right: 50%;
   }
-}
+} */
