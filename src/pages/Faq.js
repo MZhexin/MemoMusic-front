@@ -87,7 +87,7 @@ class Faq extends Component {
                 我们希望您在一天之中完成
                 <span className='faq-highlight'>不多于两轮</span> 实验，
                 <br />
-                并在<span className='faq-highlight'>4月1日前</span>{' '}
+                并在<span className='faq-highlight'>4月2日前</span>{' '}
                 完成所有实验。
                 <br />
                 <br />
