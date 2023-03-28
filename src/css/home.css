@@ -15,14 +15,14 @@
 .selectWeather {
   display: flex;
   align-items: flex-start;
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 20px;
 }
 
 .selectContext {
   display: flex;
   align-items: flex-start;
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 20px;
 }
 
@@ -112,13 +112,8 @@
 .numOfTest {
   font-style: italic;
   font-weight: bolder;
-  font-size: 24px;
+  font-size: 30px;
   color: #555555;
-}
-
-.login-context {
-  font-size: 33px;
-  font-weight: bold;
 }
 
 .mainPage {
@@ -136,7 +131,7 @@
     font-size: 25px;
   }
   .intro {
-    font-size: 20px;
+    font-size: 22px;
   }
   .testButtonDisplay {
     font-size: 28px;

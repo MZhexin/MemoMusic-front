@@ -15,35 +15,25 @@ class NavBar extends Component {
         </Link>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='nav-intro'>
-            <NavLink to='/faq' className='navbar nav-link'>
-              项目介绍
-            </NavLink>
-          </Nav>
-
+          <NavLink
+            to='/faq'
+            className='navbar-nav nav-link mr-auto'
+            style={{ color: '#999999' }}
+          ></NavLink>
           <Nav>
             {!loggedIn && (
-              <NavLink
-                to='/login'
-                className='nav-link '
-                style={{ marginRight: '20px' }}
-              >
+              <NavLink to='/login' className='nav-link'>
                 登录
               </NavLink>
             )}
             {!loggedIn && (
-              <NavLink to='/register' className='nav-link '>
+              <NavLink to='/register' className='nav-link'>
                 注册
               </NavLink>
             )}
             {loggedIn && <Nav.Link>{'你好，' + name}</Nav.Link>}
             {loggedIn && (
-              <Nav.Link
-                onClick={() => handleLogOut()}
-                style={{ marginLeft: '20px' }}
-              >
-                退出
-              </Nav.Link>
+              <Nav.Link onClick={() => handleLogOut()}>退出</Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

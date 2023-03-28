@@ -122,7 +122,7 @@ class Login extends Component {
           </button>
         </form>
         <Link to='/register'>
-          <p>新用户？请前往注册</p>
+          <p>新用户？请点击这里注册</p>
         </Link>
         <br />
         <br />
