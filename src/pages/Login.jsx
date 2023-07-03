@@ -73,34 +73,39 @@ class Login extends Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <p>您已成功登录</p>
-          <Link to='/'>返回首页开始实验</Link>
+          <p>You have successfully logged in.</p>
+          <Link to='/'>Go back to the homepage to start the experiment.</Link>
         </div>
       );
     }
     if (this.state.loggedIn === 1) {
       return (
         <div>
-          <p>登录中。。。</p>
-          <p>请耐心等候</p>
+          <p>Logging in...</p>
+          <p>Please wait patiently.</p>
         </div>
       );
     }
     return (
       <div>
-        <h1 className='login-title'>登录</h1>
+        <h1 className='login-title'>Login</h1>
         {this.state.loggedIn === -1 && (
-          <p style={{ color: 'red' }}>***密码错误，请重新输入</p>
+          <p style={{ color: 'red' }}>
+            ***Incorrect password. Please re-enter.
+          </p>
         )}
         {this.state.loggedIn === -2 && (
-          <p style={{ color: 'red' }}>***用户名不存在，请注册或联系管理员</p>
+          <p style={{ color: 'red' }}>
+            ***Username does not exist. Please register or contact the
+            administrator.
+          </p>
         )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
         >
-          <label className='label'>用户名</label>
+          <label className='label'>Username</label>
           <input
             className='input'
             type='text'
@@ -108,7 +113,7 @@ class Login extends Component {
             value={name}
             onChange={this.updateField}
           ></input>
-          <label className='label'>密码</label>
+          <label className='label'>Password</label>
           <input
             className='input'
             type='password'
@@ -118,11 +123,11 @@ class Login extends Component {
           ></input>
 
           <button className='button' onClick={() => this.handleSubmit()}>
-            登录
+            Login
           </button>
         </form>
         <Link to='/register'>
-          <p>新用户？请点击这里注册</p>
+          <p>New user? Click here to register.</p>
         </Link>
         <br />
         <br />
@@ -130,7 +135,8 @@ class Login extends Component {
         <br />
         <br />
         <p>
-          忘记密码或者遇到其他登录问题，请及时联系管理员。微信：szxh20190131
+          If you forgot your password or encounter any other login issues,
+          please contact the administrator promptly. WeChat: szxh20190131.
         </p>
       </div>
     );

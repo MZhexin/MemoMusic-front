@@ -53,18 +53,20 @@ class Faq extends Component {
           </p>
           {this.state.questions[0] && (
             <p className='faq-content'>
-              本实验旨在测试音乐对人情绪的影响。
+              This experiment is designed to assess the impact of music on human
+              emotions.
               <br />
-              实验中您会听几段音乐，并在听音乐前后输入您的情绪变化。
+              During the experiment, you will listen to several pieces of music
+              and record your emotional changes before and after listening.
               <br />
-              我们将通过您给予的反馈调整我们的推荐方案，
+              Based on your feedback, we will adjust our recommendation scheme,
               <br />
-              以求给您带来更好的聆听体验。
+              aiming to provide you with an improved listening experience.
               <br />
               <br />
-              同时，我们将采集您由音乐引发的回忆，
+              Simultaneously, we will collect memories evoked by the music,
               <br />
-              并研究不同的回忆如何影响您的选择。
+              and study how different memories influence your choices.
               <br />
             </p>
           )}
@@ -72,34 +74,42 @@ class Faq extends Component {
         <br />
         <div className='faq-block'>
           <p className='faq-title' onClick={() => this.ifShowContent(1)}>
-            实验过程
+            Experiment Procedure
           </p>
           {this.state.questions[1] && (
             <div>
               <p className='faq-content'>
-                本实验将分为四轮进行：
+                The experiment will be divided into four rounds:
                 <br />
-                第一、四轮我们将为您推荐曲库中的音乐，
+                In the first and fourth rounds, we will recommend music from our
+                library to you,
                 <br />
-                第二、三轮我们将为您生成音乐的片段。
-                <br />
-                <br />
-                我们希望您在一天之中完成
-                <span className='faq-highlight'>不多于两轮</span> 实验，
-                <br />
-                并在<span className='faq-highlight'>4月2日前</span>{' '}
-                完成所有实验。
+                while in the second and third rounds, we will generate segments
+                of music for you.
                 <br />
                 <br />
-                每一轮实验开始前我们都将请您输入您当下的情绪数据（采用V-A模型），
+                We hope that you complete
+                <span className='faq-highlight'>
+                  no more than two rounds
+                </span>{' '}
+                of the experiment in a day,
                 <br />
-                之后您将听到四段不同的音乐。
+                and finish all experiments before{' '}
+                <span className='faq-highlight'>April 2nd</span>.
                 <br />
-                如果音乐唤起了您的部分回忆或情绪，
                 <br />
-                我们希望您能在网页提供的输入框内简洁直白地描述。
+                At the beginning of each round, we will ask you to input your
+                current emotional data (using the V-A model),
                 <br />
-                在每段音乐结束之后，我们同样会使用V-A模型来采取您情绪变化的数据。
+                then you will listen to four different pieces of music.
+                <br />
+                If the music evokes some memories or emotions,
+                <br />
+                we would like you to describe them succinctly and directly in
+                the input box provided on the webpage.
+                <br />
+                After each piece of music, we will also use the V-A model to
+                collect data on your emotional changes.
                 <br />
               </p>
             </div>
@@ -108,41 +118,49 @@ class Faq extends Component {
         <br />
         <div className='faq-block'>
           <p className='faq-title' onClick={() => this.ifShowContent(2)}>
-            V-A表的使用
+            Use of V-A Scale
           </p>
           {this.state.questions[2] && (
             <div>
               <p className='faq-content'>
-                Valence-Arousal/愉悦度-兴奋度模型是一种心理学中常用的情绪标注模型。
+                The Valence-Arousal (V-A) model is a commonly used emotion
+                annotation model in psychology.
                 <br />
-                其中，Valence代表情绪的积极程度，
+                Here, Valence represents the positivity or negativity of an
+                emotion,
                 <br />
-                也就是音乐所表达的情绪是悲伤还是高兴；
+                in other words, whether the emotion expressed by the music is
+                sad or happy.
                 <br />
-                Arousal代表唤起程度的高低，
+                Arousal represents the intensity of the arousal,
                 <br />
-                也就是兴奋程度。
+                or excitement level.
                 <br />
-                这两个维度都是通过数值来代表其高低程度。
+                Both of these dimensions are represented by numerical values to
+                denote their intensity.
                 <br />
-                比如下图所示的愉悦度区间为[-5, 5]，
+                For instance, as shown in the figure below, the range for
+                Valence is [-5, 5],
                 <br />
-                其中
+                where
                 <span className='faq-highlight'>
-                  -5代表非常悲伤/消极，5代表非常高兴/积极；
+                  -5 signifies extreme sadness/negativity and 5 represents
+                  extreme happiness/positivity;
                 </span>
                 <br />
-                兴奋度区间为[0, 10] ，其中
+                the Arousal range is [0, 10] where
                 <span className='faq-highlight'>
-                  0代表平静，10代表非常激动。
+                  0 stands for calm and 10 signifies extreme excitement.
                 </span>
                 <br />
                 <br />
-                根据这个定义，喜悦根据程度不同可以用V(愉悦度)：5，A(兴奋度)：8等表示；
+                According to this definition, joy could be represented as V
+                (Valence): 5, A (Arousal): 8, depending on the intensity;
                 <br />
-                愤怒可以用V(愉悦度)：-3，A(兴奋度)：6等表示；
+                anger could be represented as V (Valence): -3, A (Arousal): 6;
                 <br />
-                抑郁则可以用V(愉悦度)：-5，A(兴奋度)：2等表示。
+                depression could be represented as V (Valence): -5, A (Arousal):
+                2.
               </p>
               <img
                 src={VAbg}
@@ -156,31 +174,39 @@ class Faq extends Component {
         <br />
         <div className='faq-block'>
           <p className='faq-title' onClick={() => this.ifShowContent(3)}>
-            如何描述音乐相关的回忆/情绪
+            How to Describe Music-Related Memories/Emotions
           </p>
           {this.state.questions[3] && (
             <div>
               <p className='faq-content'>
-                我们希望您能在听音乐时尽可能多地描述您
-                <span className='faq-highlight'>被音乐唤起的回忆</span>。
+                We hope that while listening to the music, you can describe as
+                many of your
+                <span className='faq-highlight'>
+                  memories evoked by the music
+                </span>{' '}
+                as possible.
                 <br />
-                描述回忆时，
+                When describing these memories,
                 <br />
-                我们希望您能在开头一两句话内简洁直白地描述与回忆关联的情绪。
+                we would like you to succinctly and directly describe the
+                associated emotions in the first sentence or two.
                 <br />
-                （例：这首曲子激励我度过最艰难的时期，如今每次听见都还备受鼓舞{' '}
+                (Example: This song helped me through the toughest times, and
+                still inspires me every time I hear it.
                 <br />
-                / 听这首乐曲时还是中学，如今大家天各一方，真让人难过）
+                / I used to listen to this music in high school, now we're all
+                living our separate lives, it really makes me feel sad.)
                 <br />
-                在进行这项描述后，
+                After providing this description,
                 <br />
-                您可以选择是否继续详细描述您回忆中的细节。
+                you can choose whether or not to further detail the specifics of
+                your memories.
                 <br />
-                如果您能够回想起回忆相关的时间点，
+                If you can recall the temporal context of these memories,
                 <br />
-                比如几年前或者人生某个特定阶段时，
+                such as a few years ago or a specific stage of your life,
                 <br />
-                我们也希望您能在输入框内简短描述一下。
+                we also hope you could briefly describe it in the input box.
                 <br />
                 <br />
               </p>

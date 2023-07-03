@@ -23,12 +23,12 @@ class NavBar extends Component {
           <Nav>
             {!loggedIn && (
               <NavLink to='/login' className='nav-link'>
-                登录
+                Login
               </NavLink>
             )}
             {!loggedIn && (
               <NavLink to='/register' className='nav-link'>
-                注册
+                Register
               </NavLink>
             )}
             {loggedIn && <Nav.Link>{'你好，' + name}</Nav.Link>}

@@ -22,7 +22,7 @@ class Home extends Component {
       width: 0,
       height: 0,
       canvasWidth: 0,
-      songs: ['第1首', '第2首', '第3首', '第4首'],
+      songs: ['First Song', 'Second Song', 'Third Song', 'Fourth Song'],
       favorite: -1,
       overallRate: -1,
       v: -10,
@@ -219,34 +219,37 @@ class Home extends Component {
       return (
         <div style={{ textAlign: 'center' }}>
           <h2 className='login-context'>
-            请先登录或者注册，
+            Please log in or register first,
             <br />
-            谢谢！
+            thank you!
           </h2>
           <br />
           <br />
           <br />
           <h3>
-            <Link to='/faq'>点击此处阅读实验介绍</Link>
+            <Link to='/faq'>
+              Click here to read the experiment introduction
+            </Link>
           </h3>
           <br />
           <br />
           <h3>
-            <Link to='/login'>点击此处登录网页</Link>
+            <Link to='/login'>Click here to access the login page</Link>
           </h3>
           <br />
           <br />
           <h3>
-            <Link to='/register'>点击此处注册账号</Link>
+            <Link to='/register'>Click here to register an account</Link>
           </h3>
           <br />
           <br />
           <br />
           <br />
           <p>
-            咨询相关信息，请加微信 <br />
-            szxh20190131 或者 Nag12333 <br />
-            以联系管理员
+            For further information, please contact the administrator via
+            WeChat:
+            <br />
+            szxh20190131 or Nag12333.
           </p>
         </div>
       );
@@ -255,69 +258,86 @@ class Home extends Component {
       return (
         <div className='mainPage'>
           <div className='introclass'>
-            <p className='sTitle'>实验入口</p>
+            <p className='sTitle'>Experiment Entrance</p>
             {this.props.expNum <= 4 && (
               <p className='intro'>
-                本实验旨在测试音乐对人情绪的影响。
+                This experiment aims to test the impact of music on human
+                emotions.
                 <br />
-                实验将分为<span className='numOfTest'>4</span> 轮进行，
+                The experiment consists of <span className='numOfTest'>
+                  4
+                </span>{' '}
+                rounds,
                 {this.state.width >= 600 && <br />}
-                我们希望您在<span className='numOfTest'>1</span>{' '}
-                天之中完成不多于<span className='numOfTest'>2</span> 轮实验，
+                and we kindly request you to complete no more than{' '}
+                <span className='numOfTest'>2</span> rounds within{' '}
+                <span className='numOfTest'>1</span> day.
                 {this.state.width >= 600 && <br />}
-                请尽量选择有不同情绪时进行试验， 并在
-                <span className='numOfTest'>3</span> 天之内完成所有
-                <span className='numOfTest'>4</span>轮实验。
-                <br />每<span className='numOfTest'>1</span>{' '}
-                轮实验开始前我们都将请您输入您当下的情绪数据（采用
-                <Link to='/faq'>V-A模型</Link>），
+                Please try to choose different emotional states for the tests
+                and finish all <span className='numOfTest'>4</span> rounds
+                within <span className='numOfTest'>3</span> days.
+                <br />
+                Before each round, we will ask you to input your current
+                emotional data (using the <Link to='/faq'>V-A model</Link>),
                 {this.state.width >= 600 && <br />}
-                之后您将听到<span className='numOfTest'>4</span>{' '}
-                段不同的轻音乐。
+                and then you will listen to <span className='numOfTest'>
+                  4
+                </span>{' '}
+                different pieces of light music.
                 <br />
-                如果音乐唤起了您的部分回忆或情绪，
+                If the music evokes any memories or emotions,
                 {this.state.width >= 600 && <br />}
-                我们希望您能在网页提供的输入框内
-                <span className='numOfTest'>简洁直白地描述</span> ，
+                we kindly ask you to provide a{' '}
+                <span className='numOfTest'>
+                  concise and straightforward description
+                </span>{' '}
+                in the provided text box,
                 <br />
-                这将对我们实验中研究回忆如何影响我们对于音乐的理解有极大帮助。
+                as it will greatly help us understand how memories influence our
+                perception of music in our research.
                 <br />
-                在每段音乐结束之后，我们同样会使用V-A模型来采取您情绪变化的数据，
+                After each piece of music, we will also collect your emotional
+                data using the V-A model,
                 {this.state.width >= 600 && <br />}
-                以供实验对比。
+                for comparison purposes in the experiment.
                 <br />
-                该V-A值将在之后用来调整算法，不会影响本轮音乐推荐。
-                <br />
-                <br />
-                请您在实验开始后不要离开这个页面直至结束。
-                <br />
-                如需离开，请您在返回时务必重新登录。
-                <br />
-                如果您在本轮实验开始后的3个小时内重新登录，
-                <br />
-                您将可以继续实验中未完成的部分。
-                <br />
-                如果超过3个小时， 则本轮实验的记录将清空，您需重新开始本轮实验。
+                These V-A values will be used to adjust the algorithm and will
+                not affect the current round of music recommendation.
                 <br />
                 <br />
+                Please do not leave this page until the experiment is complete.
                 <br />
-                这是您的第<span className='numOfTest'>{this.props.expNum}</span>
-                轮实验
+                If you need to leave, please make sure to log in again upon
+                returning.
+                <br />
+                If you log in again within 3 hours after the start of the
+                current round,
+                <br />
+                you will be able to continue from where you left off.
+                <br />
+                If it exceeds 3 hours, the current round's progress will be
+                cleared, and you will need to start the round again.
+                <br />
+                <br />
+                <br />
+                This is your{' '}
+                <span className='numOfTest'>{this.props.expNum}</span> round of
+                the experiment.
               </p>
             )}
             {this.props.expNum > 4 && (
               <p className='intro'>
-                您已完成所有实验，我们衷心感谢您的支持与帮助！
+                You have completed all the experiments. We sincerely appreciate
+                your support and assistance!
               </p>
             )}
-
             <div>
               {this.props.expNum <= 4 && (
                 <Button
                   className='testButtonDisplay'
                   onClick={() => this.startTest()}
                 >
-                  开始实验
+                  Start Experiment
                 </Button>
               )}
               {this.props.expNum > 4 && (
@@ -325,7 +345,7 @@ class Home extends Component {
                   className='testButtonDisplay'
                   onClick={() => this.props.handleLogOut()}
                 >
-                  退出登录
+                  Log Out
                 </Button>
               )}
             </div>
@@ -337,19 +357,21 @@ class Home extends Component {
       return (
         <div className='mainPage'>
           <div className='introclass'>
-            <p className='sTitle'>恭喜您，完成本轮实验</p>
+            <p className='sTitle'>
+              Congratulations, you have completed this round of the experiment
+            </p>
             <p className='hint'>
-              当前实验进度为 {this.props.expNum} / 4， <br />
+              Current experiment progress: {this.props.expNum} / 4 <br />
               <br />
-              请于4
+              Please complete the remaining parts before
               {/* {isNaN(this.props.endDate.getMonth())
-                ? this.state.newDate.getMonth() + 1
-                : this.props.endDate.getMonth() + 1} */}
-              月2
+      ? this.state.newDate.getMonth() + 1
+      : this.props.endDate.getMonth() + 1} */}
+              Month 2
               {/* {isNaN(this.props.endDate.getDate())
-                ? this.state.newDate.getDate()
-                : this.props.endDate.getDate()} */}
-              日之前完成剩余部分
+      ? this.state.newDate.getDate()
+      : this.props.endDate.getDate()} */}
+              Day.
             </p>
             <div style={{ display: 'block' }}>
               {this.state.favorite === 0 && (
@@ -362,7 +384,7 @@ class Home extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  请选择本轮您最满意的音乐：
+                  Please select your most satisfying music for this round:
                 </p>
               )}
               {this.state.favorite !== 0 && (
@@ -374,7 +396,7 @@ class Home extends Component {
                     display: 'inline',
                   }}
                 >
-                  请选择本轮您最满意的音乐：
+                  Please select your most satisfying music for this round:
                 </p>
               )}
               <select
@@ -400,7 +422,8 @@ class Home extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  请为本轮推荐的音乐做总评分：
+                  Please provide an overall rating for the music recommended in
+                  this round:
                 </p>
               )}
               {this.state.overallRate !== 0 && (
@@ -412,7 +435,8 @@ class Home extends Component {
                     display: 'inline',
                   }}
                 >
-                  请为本轮推荐的音乐做总评分：
+                  Please provide an overall rating for the music recommended in
+                  this round:
                 </p>
               )}
               <select
@@ -420,12 +444,12 @@ class Home extends Component {
                 onChange={this.selectOverallRate}
                 style={{ display: 'inline' }}
               >
-                <option value={0}> （空）</option>
-                <option value={1}> 很失望</option>
-                <option value={2}> 有点失望</option>
-                <option value={3}> 一般般</option>
-                <option value={4}> 比较满意</option>
-                <option value={5}> 非常满意</option>
+                <option value={0}> (Empty) </option>
+                <option value={1}> Very Disappointed </option>
+                <option value={2}> Somewhat Disappointed </option>
+                <option value={3}> Neutral </option>
+                <option value={4}> Quite Satisfied </option>
+                <option value={5}> Very Satisfied </option>
               </select>
             </div>
             <br />
@@ -435,7 +459,7 @@ class Home extends Component {
                 className='testButtonDisplay'
                 onClick={() => this.endTest()}
               >
-                完成实验并退出登录
+                Complete the experiment and log out.
               </Button>
             </div>
           </div>
@@ -447,9 +471,11 @@ class Home extends Component {
         <div className='mainPage'>
           <div className='inTest'>
             <p className='sTitle'>
-              恭喜您已完成本次实验听音乐的部分，
+              Congratulations on completing the music listening part of the
+              experiment.
               <br />
-              请完成以下问卷以结束实验：
+              Please complete the following questionnaire to finish the
+              experiment:
             </p>
             <div
               style={{
@@ -469,7 +495,9 @@ class Home extends Component {
     if (this.state.step === 1) {
       return (
         <div className='mainPage'>
-          <p className='sTitle'>请选择您当下所处的天气环境：</p>
+          <p className='sTitle'>
+            Please select the current weather conditions you are experiencing:
+          </p>
           <select
             className='selectWeather'
             value={this.state.weather}
@@ -480,12 +508,13 @@ class Home extends Component {
               //onChange需要添加
             }
             {/* <option value={0} defaultValue disabled> （空）</option> */}
-            <option value={0}> 晴朗</option>
-            <option value={1}> 阴雨</option>
-            <option value={2}> 炎热</option>
-            <option value={3}> 寒冷</option>
+            <option value={0}>Sunny</option>
+            <option value={1}>Cloudy/Rainy</option>
+            <option value={2}>Hot</option>
+            <option value={3}>Cold</option>
           </select>
-          <p className='sTitle'>请选择您当下所处的心情：</p>
+          <p className='sTitle'>Please select your current mood:</p>
+
           <select
             className='selectContext'
             value={this.state.context}
@@ -493,16 +522,24 @@ class Home extends Component {
             style={{ display: 'inline' }}
           >
             {/* <option value={0} defaultValue disabled> （空）</option> */}
-            <option value={3}> 疯狂：崩溃、愤怒、暴躁......</option>
-            <option value={0}> 消极：生病、抑郁、失恋......</option>
-            <option value={1}> 低落：无聊、加班、独处......</option>
-            <option value={2}> 平静：阅读、学习、休闲......</option>
-            <option value={5}>积极：休闲运动、旅行......</option>
-            <option value={6}>兴奋：游戏、比赛、剧烈运动......</option>
-            <option value={4}> 有爱：恋爱、聚会......</option>
+            <option value={3}>
+              Intense: Breakdown, Anger, Irritability...
+            </option>
+            <option value={0}>
+              Negative: Sickness, Depression, Heartbreak...
+            </option>
+            <option value={1}>Low: Boredom, Overtime, Solitude...</option>
+            <option value={2}>Calm: Reading, Learning, Leisure...</option>
+            <option value={5}>
+              Positive: Recreational Sports, Traveling...
+            </option>
+            <option value={6}>
+              Excited: Gaming, Competition, Intense Sports...
+            </option>
+            <option value={4}>Lovely: Romance, Gathering...</option>
           </select>
-          {/* <div className="inTest"> */}
-          <p className='sTitle'>请输入您当下的情绪：</p>
+          <p className='sTitle'>Please enter your current emotions:</p>
+
           <div
             style={{
               display: 'block',
@@ -525,7 +562,9 @@ class Home extends Component {
       return (
         <div className='mainPage'>
           <div className='inTest'>
-            <p className='sTitle'>请听音乐 {this.state.songnum}/ 4</p>
+            <p className='sTitle'>
+              Please listen to the music. {this.state.songnum}/ 4
+            </p>
             <div
               style={{
                 display: 'block',
@@ -550,8 +589,10 @@ class Home extends Component {
       return (
         <div className='mainPage'>
           <div className='inTest'>
-            <p className='sTitle stsm'>请输入您当下的情绪：</p>
-            <p className='hint itsm'>(蓝点作为参考表示上一次输入的值)</p>
+            <p className='sTitle stsm'>Please enter your current emotions:</p>
+            <p className='hint itsm'>
+              (The blue dot serves as a reference for the previous input)
+            </p>
             <div
               style={{
                 display: 'block',

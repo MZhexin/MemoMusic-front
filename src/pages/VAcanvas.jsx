@@ -156,16 +156,11 @@ class VAcanvas extends Component {
           />
           {Math.abs(this.state.val1x) <= 5 && (
             <h1 className='hint'>
-              您当前的Valence(愉悦度)值为：{this.state.val1x}，
-              Arousal(兴奋度)值为：{this.state.val1y}
+              Your current Valence value is: {this.state.val1x}, and your
+              Arousal value is: {this.state.val1y}.
             </h1>
           )}
-          {/* {(Math.abs(this.state.val1x) > 5 ||
-            Math.abs(this.state.val1y - 5) > 5) && (
-            <h1 className="hint hintsm" style={{ color: this.state.color }}>
-              {"***请用鼠标点击面板输入一个有效值***"}
-            </h1>
-          )} */}
+
           <img
             src={BDot}
             style={{
@@ -201,7 +196,7 @@ class VAcanvas extends Component {
                     display: 'inline',
                   }}
                 >
-                  请为这段音乐的推荐评分：
+                  Please rate the recommendation for this music segment:
                 </p>
               )}
               {this.state.rateNotFilled && (
@@ -214,7 +209,7 @@ class VAcanvas extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  请为这段音乐的推荐评分：
+                  Please rate the recommendation for this music segment:
                 </p>
               )}
               <select
@@ -222,12 +217,12 @@ class VAcanvas extends Component {
                 onChange={this.selectRate}
                 style={{ display: 'inline' }}
               >
-                <option value={0}> （空）</option>
-                <option value={1}> 很失望</option>
-                <option value={2}> 有点失望</option>
-                <option value={3}> 一般般</option>
-                <option value={4}> 比较满意</option>
-                <option value={5}> 非常满意</option>
+                <option value={0}> (Empty) </option>
+                <option value={1}> Very Disappointed </option>
+                <option value={2}> Somewhat Disappointed </option>
+                <option value={3}> Neutral </option>
+                <option value={4}> Quite Satisfied </option>
+                <option value={5}> Very Satisfied </option>
               </select>
               <br />
               <br />
@@ -240,7 +235,8 @@ class VAcanvas extends Component {
                     display: 'inline',
                   }}
                 >
-                  请选择您对这段音乐的熟悉程度：
+                  Please select your level of familiarity with this music
+                  segment:
                 </p>
               )}
               {this.state.rateNotFilled && (
@@ -253,7 +249,8 @@ class VAcanvas extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  请选择您对这段音乐的熟悉程度：
+                  Please select your level of familiarity with this music
+                  segment:
                 </p>
               )}
               <select
@@ -261,12 +258,12 @@ class VAcanvas extends Component {
                 onChange={this.selectFam}
                 style={{ display: 'inline' }}
               >
-                <option value={0}> （空）</option>
-                <option value={1}> 不熟悉</option>
-                <option value={2}> 可能听过</option>
-                <option value={3}> 比较熟悉</option>
-                <option value={4}> 非常熟悉</option>
-                <option value={5}> 熟悉且喜欢</option>
+                <option value={0}> (Empty) </option>
+                <option value={1}> Not familiar </option>
+                <option value={2}> Possibly heard before </option>
+                <option value={3}> Fairly familiar </option>
+                <option value={4}> Very familiar </option>
+                <option value={5}> Familiar and like it </option>
               </select>
               <br />
               <br />
@@ -274,7 +271,8 @@ class VAcanvas extends Component {
                 className='hint hintsm'
                 style={{ color: '#dd5500', fontWeight: 'bolder' }}
               >
-                当下的情绪输入不会影响本轮的音乐推荐。
+                Your current emotion input will not affect the music
+                recommendation for this round.
               </p>
             </div>
           )}
@@ -284,7 +282,7 @@ class VAcanvas extends Component {
                 className='testButtonDisplay'
                 onClick={() => this.handleButtonClick()}
               >
-                继续实验
+                Continue the experiment.
               </Button>
             </div>
           )}
