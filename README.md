@@ -7,3 +7,9 @@ This project was created for a research study. For anyone who hope to use some o
 3. Download the project, and use terminal to go to your folder. (the last command should be `cd musicEmoAnalysis`)
 4. Use `npm start` to run the project.
 
+
+
+## ATTENTION
+#### feature/ch is the Chinese Version of the MemoMusic3.0 frontend.
+#### feature/en is the English Version of the MemoMusic3.0 frontend.
+#### feature/1.0.0 is the original MemoMusic1.0 frontend.
