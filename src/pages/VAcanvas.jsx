@@ -196,7 +196,7 @@ class VAcanvas extends Component {
                     display: 'inline',
                   }}
                 >
-                  Please rate the recommendation for this music segment:
+                  Rate your satisfaction with the music:
                 </p>
               )}
               {this.state.rateNotFilled && (
@@ -209,7 +209,7 @@ class VAcanvas extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  Please rate the recommendation for this music segment:
+                  Rate your satisfaction with the music:
                 </p>
               )}
               <select
@@ -235,8 +235,7 @@ class VAcanvas extends Component {
                     display: 'inline',
                   }}
                 >
-                  Please select your level of familiarity with this music
-                  segment:
+                  Select your familiarity with the music:
                 </p>
               )}
               {this.state.rateNotFilled && (
@@ -249,8 +248,7 @@ class VAcanvas extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  Please select your level of familiarity with this music
-                  segment:
+                  Select your familiarity with the music:
                 </p>
               )}
               <select
@@ -282,7 +280,7 @@ class VAcanvas extends Component {
                 className='testButtonDisplay'
                 onClick={() => this.handleButtonClick()}
               >
-                Continue the experiment.
+                Continue
               </Button>
             </div>
           )}

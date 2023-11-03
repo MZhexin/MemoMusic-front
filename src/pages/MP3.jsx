@@ -120,7 +120,7 @@ class MP3 extends Component {
         <br />
         <InputGroup variant='dark'>
           <InputGroup.Prepend>
-            <InputGroup.Text>Music Memories</InputGroup.Text>
+            <InputGroup.Text>Memory</InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
             as='textarea'
@@ -133,13 +133,12 @@ class MP3 extends Component {
         {!this.state.writingComment && this.state.status === 0 && (
           <div>
             <p>
-              — Please start entering your memories before the music ends and
-              the page automatically redirects —
+            Start input your memory before the music ends.
             </p>
             <br />
             <br />
             <p>
-              If the music doesn't load properly, you can click
+            If the music does not play, please click 
               <a
                 href={this.props.url}
                 target='_blank'
@@ -147,17 +146,17 @@ class MP3 extends Component {
               >
                 here
               </a>
-              to access the audio source
+              to download the music
             </p>
             <p>
-              and after listening, click
+            and after listening, click 
               <a
                 onClick={() => this.props.audioEnd(this.state.writingComment)}
                 style={{ color: 'blue' }}
               >
                 here
               </a>
-              to proceed to the next stage
+              to continue.
             </p>
           </div>
         )}

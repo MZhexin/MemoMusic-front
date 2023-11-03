@@ -358,10 +358,10 @@ class Home extends Component {
         <div className='mainPage'>
           <div className='introclass'>
             <p className='sTitle'>
-              Congratulations, you have completed this round of the experiment
+            Congratulations on completing this round
             </p>
             <p className='hint'>
-              Current experiment progress: {this.props.expNum} / 4 <br />
+            Current progress: {this.props.expNum} / 4 <br />
               <br />
               Please complete the remaining parts before
               {/* {isNaN(this.props.endDate.getMonth())
@@ -384,7 +384,7 @@ class Home extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  Please select your most satisfying music for this round:
+                  Select your most satisfied music:
                 </p>
               )}
               {this.state.favorite !== 0 && (
@@ -396,7 +396,7 @@ class Home extends Component {
                     display: 'inline',
                   }}
                 >
-                  Please select your most satisfying music for this round:
+                  Select your most satisfied music:
                 </p>
               )}
               <select
@@ -422,8 +422,7 @@ class Home extends Component {
                     color: '#dd0000',
                   }}
                 >
-                  Please provide an overall rating for the music recommended in
-                  this round:
+                  Your overall rate for this round:
                 </p>
               )}
               {this.state.overallRate !== 0 && (
@@ -435,8 +434,7 @@ class Home extends Component {
                     display: 'inline',
                   }}
                 >
-                  Please provide an overall rating for the music recommended in
-                  this round:
+                  Your overall rate for this round:
                 </p>
               )}
               <select
@@ -459,7 +457,7 @@ class Home extends Component {
                 className='testButtonDisplay'
                 onClick={() => this.endTest()}
               >
-                Complete the experiment and log out.
+                Complete and log out
               </Button>
             </div>
           </div>
@@ -496,7 +494,7 @@ class Home extends Component {
       return (
         <div className='mainPage'>
           <p className='sTitle'>
-            Please select the current weather conditions you are experiencing:
+          Select the current weather condition:
           </p>
           <select
             className='selectWeather'
@@ -513,7 +511,7 @@ class Home extends Component {
             <option value={2}>Hot</option>
             <option value={3}>Cold</option>
           </select>
-          <p className='sTitle'>Please select your current mood:</p>
+          <p className='sTitle'>Select your current mood:</p>
 
           <select
             className='selectContext'
@@ -538,7 +536,7 @@ class Home extends Component {
             </option>
             <option value={4}>Lovely: Romance, Gathering...</option>
           </select>
-          <p className='sTitle'>Please enter your current emotions:</p>
+          <p className='sTitle'>Enter your current Emotion:</p>
 
           <div
             style={{
@@ -563,7 +561,7 @@ class Home extends Component {
         <div className='mainPage'>
           <div className='inTest'>
             <p className='sTitle'>
-              Please listen to the music. {this.state.songnum}/ 4
+            Listen to the music  {this.state.songnum}/ 4
             </p>
             <div
               style={{
@@ -589,7 +587,7 @@ class Home extends Component {
       return (
         <div className='mainPage'>
           <div className='inTest'>
-            <p className='sTitle stsm'>Please enter your current emotions:</p>
+            <p className='sTitle stsm'>Enter your current emotion:</p>
             <p className='hint itsm'>
               (The blue dot serves as a reference for the previous input)
             </p>
